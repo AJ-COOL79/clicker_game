@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Click Me</title>
+    <link rel="stylesheet" href="C:\Kika\THE folder\clicker_game\style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <button id="cookie_img">
+                <img src="https://orig00.deviantart.net/ec14/f/2011/015/5/f/my_cookie_by_sweetsara234-d379xrd.png"> </button>
+            <br>
+            <br>
+            <h2>You have
+                <span id="value"></span> cookies! </h2>
+
+            <button disabled id="first_upgrade_button">more</button>
+            <p>
+                You have
+                <span id="first_upgrade_couter"></span> upgrades
+            </p>
+            <p>next upgrade:
+                <span id="first_upgrade_value"> </span> cookies
+            </p>
+
+
+            <button disabled id="second_upgrade_button">10x more</button>
+            <p>
+                You have
+                <span id="second_upgrade_couter"></span> upgrades
+            </p>
+            <p>next upgrade:
+                <span id="second_upgrade_value"> </span> cookies
+            </p>
+
+
+            <h3>Total cookies:
+                <span id="total_value"></span>
+            </h3>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+    <script>
+
+        var cookie_jar = 0;
+        var first_upgrade_value = 10;
+        var second_upgrade_value = 100;
+        var total_value = 0;
+        var first_upgrade_cookies = 0;
+        var second_upgrade_cookies = 0;
+        var first_upgrade_couter = 0;
+        var second_upgrade_couter = 0;
+
+        $('#value').text(cookie_jar.toFixed(0));
+        $('#first_upgrade_value').text(first_upgrade_value.toFixed(0));
+        $('#second_upgrade_value').text(second_upgrade_value.toFixed(0));
+        $('#total_value').text(total_value);
+        $('#first_upgrade_couter').text(first_upgrade_couter.toFixed(0));
+        $('#second_upgrade_couter').text(second_upgrade_couter.toFixed(0));
+
+
+
+        $('#cookie_img').click(function () {
+            cookie_jar = cookie_jar + 1;
+            total_value = total_value + 1;
+            $('#value').text(cookie_jar.toFixed(0));
+            $('#total_value').text(total_value.toFixed(0)); // math.round(round/flour/sealing)
+            
+            disableBtn();
+        }
+        );
+
+
+        function disableBtn() {
+            $("#first_upgrade_button").prop('disabled', cookie_jar < first_upgrade_value);
+            $("#second_upgrade_button").prop('disabled', cookie_jar < second_upgrade_value);
+
+        };
+
+
+
+        var timer = setInterval(function () { cookie_timer() }, 1000);
+
+        function cookie_timer() {
+
+            cookie_jar = cookie_jar + first_upgrade_cookies;
+            cookie_jar = cookie_jar + second_upgrade_cookies;
+            total_value = total_value + first_upgrade_cookies + second_upgrade_cookies;
+            $('#value').text(cookie_jar.toFixed(0));
+            $('#total_value').text(total_value.toFixed(0));
+            disableBtn();
+
+
+
+        };
+        $("#first_upgrade_button").click(function () {
+            first_upgrade_cookies++;
+
+            cookie_jar = cookie_jar - first_upgrade_value;
+
+            first_upgrade_value = first_upgrade_value * 1.1;
+
+            first_upgrade_couter++
+
+            $('#first_upgrade_couter').text(first_upgrade_couter.toFixed(0));
+            $('#first_upgrade_value').text(first_upgrade_value.toFixed(0));
+            disableBtn();
+
+        });
+
+        $("#second_upgrade_button").click(function () {
+            second_upgrade_cookies = second_upgrade_cookies + 10;
+
+            cookie_jar = cookie_jar - second_upgrade_value;
+
+            second_upgrade_value = second_upgrade_value * 1.1;
+
+            second_upgrade_couter++
+            $('#second_upgrade_couter').text(second_upgrade_couter.toFixed(0));
+            $('#second_upgrade_value').text(second_upgrade_value.toFixed(0));
+            disableBtn();
+
+        });
+
+        //gameLoop 100x sekunde /100 /10 
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

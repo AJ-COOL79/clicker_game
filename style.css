@@ -1,0 +1,16 @@
+#cookie_img{
+    background-color: white;
+    border-style: none;
+    
+
+};
+#cookie_img:hover{
+    border-style: none;
+    background-color: white;
+    border: none;
+};
+/* #cookie_img:{
+    border-style: none;
+    background-color: white;
+    border: none;
+}; */

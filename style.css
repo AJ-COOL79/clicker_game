@@ -1,12 +1,12 @@
 #cookie_img{
-    background-color: white;
+    background-color: none;
     border-style: none;
     
 
 };
 #cookie_img:hover{
     border-style: none;
-    background-color: white;
+    background-color: red ;
     border: none;
 };
 /* #cookie_img:{
